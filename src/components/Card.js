@@ -28,7 +28,7 @@ class Card extends Component {
 
     return (
       <div className={`column is-${this.props.size}${this.state.active ? ' activeCard' : ''}`}>
-        <figure className="image is-256x256">
+        <figure className="image is-square">
           {this.props.cardData.find(card => card.url === this.props.url).matched
             ? null
             : <img src={activeImgURL} onClick={this.checkActive} />
