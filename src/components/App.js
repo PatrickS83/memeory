@@ -67,6 +67,7 @@ class App extends Component {
       cards.find(card => card.clicked === 2).matched = true;
     } else console.log('try again');
     cards.forEach(card => card.clicked = 0);
+    // show cards for some time before resetting
     setTimeout(() => {
       this.setState({ cards });
       this.setState({ activeCards: 0 });
