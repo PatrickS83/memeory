@@ -6,7 +6,8 @@ class Gamecontainer extends Component {
   static propTypes = {
     size: PropTypes.number,
     cardData: PropTypes.array,
-    handleCardClick: PropTypes.func
+    handleCardClick: PropTypes.func,
+    activeCards: PropTypes.number
   };
 
   componentWillMount() {
