@@ -102,6 +102,11 @@ class App extends Component {
     if (hasWon) this.setState({ won: hasWon });
   };
 
+  resetGame = () => {
+    this.setState({ won: false });
+    this.setState({ cards: [] });
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -114,6 +119,8 @@ class App extends Component {
               cardData={this.state.cards}
               handleCardClick={this.handleCardClick}
               activeCards={this.state.activeCards}
+              hasWon={this.state.won}
+              resetGame={this.resetGame}
             />
             :
             <Settings
