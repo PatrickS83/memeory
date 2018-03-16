@@ -8,8 +8,8 @@ class Card extends Component {
   render() {
     return (
       <div className={`column is-${this.props.size}`}>
-        <figure className="image is-128x128">
-          <img src="https://bulma.io/images/placeholders/128x128.png" />
+        <figure className="image is-256x256">
+          <img src="https://bulma.io/images/placeholders/256x256.png" />
         </figure>
       </div>
     );
