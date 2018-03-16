@@ -30,7 +30,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    fetch('https://api.tenor.com/v1/search?tag=cat&key=PPGBBI41SF35')
+    fetch('https://api.tenor.com/v1/search?tag=tree&key=PPGBBI41SF35&media_filter=minimal')
       .then(response => response.json())
       .then((data) => {
         const cards = data.results.splice(0, 4).map((gif, i) => (
@@ -40,7 +40,11 @@ class App extends Component {
             clicked: 0,
             matched: false
           }));
-        console.log(data);
+        // preloading images, so that user doesn't have to wait when a card is clicked
+        cards.forEach((x) => {
+          const preloadImage = new Image();
+          preloadImage.src = x.url;
+        });
         this.setState({ cards });
       });
   }
