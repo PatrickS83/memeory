@@ -29,7 +29,7 @@ class App extends Component {
     activeCards: 0,
     size: 3,
     settings: {
-      cards: 0,
+      cards: 4, // minimum value
       theme: ''
     }
   };
@@ -68,6 +68,11 @@ class App extends Component {
     if (activeCards === 2) this.checkCardMatch();
   };
 
+  startGame = () => {
+    console.log('starting');
+    this.fetchGifs();
+  };
+
   handleSettingsInputChange = (e) => {
     const elem = e.currentTarget;
     const settings = { ...this.state.settings };
@@ -95,19 +100,21 @@ class App extends Component {
       <React.Fragment>
         <Layout>
           <Header />
-          <Settings
-            handleSettingsInputChange={this.handleSettingsInputChange}
-            theme={this.state.settings.theme}
-            cards={this.state.settings.cards}
-          />
-          {this.state.cards.length ?
+          {this.state.cards.length
+            ?
             <Gamecontainer
               size={this.state.size}
               cardData={this.state.cards}
               handleCardClick={this.handleCardClick}
               activeCards={this.state.activeCards}
             />
-            : null}
+            :
+            <Settings
+              handleSettingsInputChange={this.handleSettingsInputChange}
+              startGame={this.startGame}
+              theme={this.state.settings.theme}
+              cards={this.state.settings.cards}
+            />}
         </Layout>
       </React.Fragment>
     );

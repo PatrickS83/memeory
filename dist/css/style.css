@@ -1,3 +1,8 @@
 .activeCard {
     border: 1px solid blue;
 }
+
+.playbutton {
+    width: 100%;
+    font-size: 24px;
+}

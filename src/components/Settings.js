@@ -4,8 +4,15 @@ import PropTypes from 'prop-types';
 class Settings extends Component {
   static propTypes = {
     handleSettingsInputChange: PropTypes.func,
+    startGame: PropTypes.func,
     cards: PropTypes.number,
     theme: PropTypes.string
+  };
+
+  handleStartGameClick = () => {
+    if (this.props.theme && this.props.cards % 2 === 0) {
+      this.props.startGame();
+    }
   };
 
   render() {
@@ -35,6 +42,8 @@ class Settings extends Component {
                 name="cards"
                 type="number"
                 max="16"
+                min="4"
+                step="2"
                 onChange={e => this.props.handleSettingsInputChange(e)}
                 value={this.props.cards}
               />
@@ -42,7 +51,11 @@ class Settings extends Component {
             <p className="help">This chooses the number of cards for the next game (max 16)</p>
           </div>
         </div>
-        <a className="button is-primary playbutton">Start the game!</a>
+        <a
+          className="button is-primary playbutton"
+          onClick={this.handleStartGameClick}>
+          Start the game!
+        </a>
       </div>
     );
   }
