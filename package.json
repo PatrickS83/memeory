@@ -16,8 +16,6 @@
   },
   "homepage": "https://github.com/PatrickS83/react_exercises#readme",
   "dependencies": {
-    "bootstrap": "^4.0.0",
-    "jquery": "^3.3.1",
     "popper.js": "^1.12.9",
     "prop-types": "^15.6.1",
     "react": "^16.3.0-alpha.1",
