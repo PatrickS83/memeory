@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 
 class Card extends Component {
   static propTypes = {
-    size: PropTypes.number
+    size: PropTypes.number,
+    url: PropTypes.string,
   };
   render() {
     return (
       <div className={`column is-${this.props.size}`}>
         <figure className="image is-256x256">
-          <img src="https://bulma.io/images/placeholders/256x256.png" />
+          <img src={this.props.url} />
         </figure>
       </div>
     );
