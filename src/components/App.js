@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Layout from './Layout';
 import Gamecontainer from './Gamecontainer';
 import Header from './Header';
+import Settings from './Settings';
 
 class App extends Component {
   state = {
@@ -25,15 +26,23 @@ class App extends Component {
       //   matched: false
       // }
     ],
+    activeCards: 0,
     size: 3,
-    activeCards: 0
+    settings: {
+      cards: 0,
+      theme: ''
+    }
   };
 
-  componentDidMount() {
-    fetch('https://api.tenor.com/v1/search?tag=tree&key=PPGBBI41SF35&media_filter=minimal')
+  fetchGifs = () => {
+    const amountGifs = this.state.settings.cards / 2;
+    const searchTheme = this.state.settings.theme;
+    const APIKEY = 'PPGBBI41SF35';
+
+    fetch(`https://api.tenor.com/v1/search?tag=${searchTheme}&key=${APIKEY}&media_filter=minimal`)
       .then(response => response.json())
       .then((data) => {
-        const cards = data.results.splice(0, 4).map((gif, i) => (
+        const cards = data.results.splice(0, amountGifs).map((gif, i) => (
           {
             id: i,
             url: gif.media[0].gif.url,
@@ -47,7 +56,7 @@ class App extends Component {
         });
         this.setState({ cards });
       });
-  }
+  };
 
   handleCardClick = (url) => {
     const cards = [...this.state.cards];
@@ -57,6 +66,13 @@ class App extends Component {
     let { activeCards } = this.state;
     this.setState({ activeCards: activeCards += 1 });
     if (activeCards === 2) this.checkCardMatch();
+  };
+
+  handleSettingsInputChange = (e) => {
+    const elem = e.currentTarget;
+    const settings = { ...this.state.settings };
+    settings[elem.name] = elem.name === 'theme' ? elem.value : Number(elem.value);
+    this.setState({ settings });
   };
 
   checkCardMatch = () => {
@@ -79,6 +95,11 @@ class App extends Component {
       <React.Fragment>
         <Layout>
           <Header />
+          <Settings
+            handleSettingsInputChange={this.handleSettingsInputChange}
+            theme={this.state.settings.theme}
+            cards={this.state.settings.cards}
+          />
           {this.state.cards.length ?
             <Gamecontainer
               size={this.state.size}
