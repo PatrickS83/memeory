@@ -36,18 +36,21 @@ class App extends Component {
 
     let { activeCards } = this.state;
     this.setState({ activeCards: activeCards += 1 });
-    if (activeCards === 2) this.checkCardMatch(this.state);
+    if (activeCards === 2) this.checkCardMatch();
   };
 
-  checkCardMatch = (state) => {
-    const cards = [...state.cards];
+  checkCardMatch = () => {
+    // deep copy of array of objects. [... state] is only shallow copy. is there better way?
+    const cards = JSON.parse(JSON.stringify(this.state.cards));
     if (cards.find(card => card.clicked === 2)) {
       console.log('match!');
       cards.find(card => card.clicked === 2).matched = true;
     } else console.log('try again');
     cards.forEach(card => card.clicked = 0);
-    this.setState({ cards });
-    this.setState({ activeCards: 0 });
+    setTimeout(() => {
+      this.setState({ cards });
+      this.setState({ activeCards: 0 });
+    }, 1000);
   };
 
   render() {

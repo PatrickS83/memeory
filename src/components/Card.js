@@ -17,19 +17,22 @@ class Card extends Component {
   }
 
   checkActive = () => {
-    if (this.state.active) return;
+    // disallow click when active or showing the active matches
+    if (this.state.active || this.props.activeCards >= 2) return;
     this.setState({ active: true });
     this.props.handleCardClick(this.props.url);
   };
 
   render() {
+    const activeImgURL = this.state.active ? this.props.url : 'https://bulma.io/images/placeholders/256x256.png';
+
     return (
       <div className={`column is-${this.props.size}${this.state.active ? ' activeCard' : ''}`}>
         <figure className="image is-256x256">
           {this.props.cardData.find(card => card.url === this.props.url).matched
-            ? <p>WON</p>
-            : <img src={this.props.url} onClick={this.checkActive}
-            />}
+            ? null
+            : <img src={activeImgURL} onClick={this.checkActive} />
+          }
         </figure>
       </div>
     );
