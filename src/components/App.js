@@ -6,28 +6,44 @@ import Header from './Header';
 class App extends Component {
   state = {
     cards: [
-      {
-        id: 0,
-        url: 'https://picsum.photos/256/256/',
-        clicked: 0,
-        matched: false
-      },
-      {
-        id: 1,
-        url: 'https://picsum.photos/257/257/',
-        clicked: 0,
-        matched: false
-      },
-      {
-        id: 2,
-        url: 'https://picsum.photos/255/255/',
-        clicked: 0,
-        matched: false
-      }
+      // {
+      //   id: 0,
+      //   url: 'https://picsum.photos/256/256/',
+      //   clicked: 0,
+      //   matched: false
+      // },
+      // {
+      //   id: 1,
+      //   url: 'https://picsum.photos/257/257/',
+      //   clicked: 0,
+      //   matched: false
+      // },
+      // {
+      //   id: 2,
+      //   url: 'https://picsum.photos/255/255/',
+      //   clicked: 0,
+      //   matched: false
+      // }
     ],
     size: 3,
     activeCards: 0
   };
+
+  componentDidMount() {
+    fetch('https://api.tenor.com/v1/search?tag=cat&key=PPGBBI41SF35')
+      .then(response => response.json())
+      .then((data) => {
+        const cards = data.results.splice(0, 4).map((gif, i) => (
+          {
+            id: i,
+            url: gif.media[0].gif.url,
+            clicked: 0,
+            matched: false
+          }));
+        console.log(data);
+        this.setState({ cards });
+      });
+  }
 
   handleCardClick = (url) => {
     const cards = [...this.state.cards];
@@ -50,7 +66,7 @@ class App extends Component {
     setTimeout(() => {
       this.setState({ cards });
       this.setState({ activeCards: 0 });
-    }, 1000);
+    }, 2500);
   };
 
   render() {
@@ -58,12 +74,14 @@ class App extends Component {
       <React.Fragment>
         <Layout>
           <Header />
-          <Gamecontainer
-            size={this.state.size}
-            cardData={this.state.cards}
-            handleCardClick={this.handleCardClick}
-            activeCards={this.state.activeCards}
-          />
+          {this.state.cards.length ?
+            <Gamecontainer
+              size={this.state.size}
+              cardData={this.state.cards}
+              handleCardClick={this.handleCardClick}
+              activeCards={this.state.activeCards}
+            />
+            : null}
         </Layout>
       </React.Fragment>
     );
