@@ -31,7 +31,8 @@ class App extends Component {
     settings: {
       cards: 4, // minimum value
       theme: ''
-    }
+    },
+    won: false
   };
 
   fetchGifs = () => {
@@ -92,7 +93,13 @@ class App extends Component {
     setTimeout(() => {
       this.setState({ cards });
       this.setState({ activeCards: 0 });
+      this.checkForWin();
     }, 2500);
+  };
+
+  checkForWin = () => {
+    const hasWon = this.state.cards.every(card => card.matched);
+    if (hasWon) this.setState({ won: hasWon });
   };
 
   render() {
