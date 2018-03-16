@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Card from './Card';
 
 class Gamecontainer extends Component {
   static propTypes = {
-
+    size: PropTypes.number
   };
 
   render() {
@@ -11,7 +12,12 @@ class Gamecontainer extends Component {
       <section className="section">
         <div className="container">
           <div className="columns is-multiline is-mobile">
-            <div className="column is-3">Auto</div>
+            <Card size={this.props.size} />
+            <Card size={this.props.size} />
+            <Card size={this.props.size} />
+            <Card size={this.props.size} />
+            <Card size={this.props.size} />
+            <Card size={this.props.size} />
           </div>
         </div>
       </section>

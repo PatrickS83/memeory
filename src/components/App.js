@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Layout>
-          <Gamecontainer />
+          <Gamecontainer size={3} />
         </Layout>
       </React.Fragment>
     );
