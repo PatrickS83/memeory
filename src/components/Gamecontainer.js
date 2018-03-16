@@ -5,8 +5,16 @@ import Card from './Card';
 class Gamecontainer extends Component {
   static propTypes = {
     size: PropTypes.number,
-    cardData: PropTypes.array
+    cardData: PropTypes.array,
+    handleCardClick: PropTypes.func
   };
+
+  componentWillMount() {
+    const urls = this.props.cardData.map(card => card.url);
+    const doubleURL = [...urls, ...urls];
+    const shuffledURL = this.shuffle(doubleURL);
+    this.setState({ shuffledURL });
+  }
 
   shuffle(array) {
     const urls = [...array];
@@ -25,16 +33,17 @@ class Gamecontainer extends Component {
   }
 
   render() {
-    const urls = this.props.cardData.map(card => card.url);
-    const doubleURL = [...urls, ...urls];
-    const shuffledURL = this.shuffle(doubleURL);
-    console.log(shuffledURL);
-
     return (
       <section className="section">
         <div className="container">
           <div className="columns is-multiline is-mobile">
-            {doubleURL.map((url, i) => <Card key={i} size={this.props.size} url={url} />)}
+            {this.state.shuffledURL
+              .map((url, i) => <Card
+                key={i}
+                size={this.props.size}
+                url={url}
+                handleCardClick={this.props.handleCardClick}
+              />)}
           </div>
         </div>
       </section>
