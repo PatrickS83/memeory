@@ -7,11 +7,13 @@ class Card extends Component {
   static propTypes = {
     size: PropTypes.number,
     url: PropTypes.string,
-    handleCardClick: PropTypes.func
+    handleCardClick: PropTypes.func,
+    activeCards: PropTypes.number,
+    cardData: PropTypes.array
   };
 
-  componentWillUpdate() {
-    if (this.props.activeCards === 0) this.setState({ active: false });
+  componentDidUpdate() {
+    if (this.props.activeCards === 0 && this.state.active) this.setState({ active: false });
   }
 
   checkActive = () => {
@@ -22,9 +24,12 @@ class Card extends Component {
 
   render() {
     return (
-      <div className={`column is-${this.props.size}`}>
+      <div className={`column is-${this.props.size}${this.state.active ? ' activeCard' : ''}`}>
         <figure className="image is-256x256">
-          <img src={this.props.url} onClick={this.checkActive} />
+          {this.props.cardData.find(card => card.url === this.props.url).matched
+            ? <p>WON</p>
+            : <img src={this.props.url} onClick={this.checkActive}
+            />}
         </figure>
       </div>
     );

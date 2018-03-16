@@ -44,6 +44,7 @@ class Gamecontainer extends Component {
                 url={url}
                 handleCardClick={this.props.handleCardClick}
                 activeCards={this.props.activeCards}
+                cardData={this.props.cardData}
               />)}
           </div>
         </div>

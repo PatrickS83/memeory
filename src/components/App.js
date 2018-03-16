@@ -9,17 +9,20 @@ class App extends Component {
       {
         id: 0,
         url: 'https://picsum.photos/256/256/',
-        clicked: 0
+        clicked: 0,
+        matched: false
       },
       {
         id: 1,
         url: 'https://picsum.photos/257/257/',
-        clicked: 0
+        clicked: 0,
+        matched: false
       },
       {
         id: 2,
         url: 'https://picsum.photos/255/255/',
-        clicked: 0
+        clicked: 0,
+        matched: false
       }
     ],
     size: 3,
@@ -38,8 +41,10 @@ class App extends Component {
 
   checkCardMatch = (state) => {
     const cards = [...state.cards];
-    if (cards.find(card => card.clicked === 2)) console.log('match!');
-    else console.log('try again');
+    if (cards.find(card => card.clicked === 2)) {
+      console.log('match!');
+      cards.find(card => card.clicked === 2).matched = true;
+    } else console.log('try again');
     cards.forEach(card => card.clicked = 0);
     this.setState({ cards });
     this.setState({ activeCards: 0 });
