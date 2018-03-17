@@ -24,14 +24,14 @@ class Card extends Component {
   };
 
   render() {
-    const activeImgURL = this.state.active ? this.props.url : 'https://bulma.io/images/placeholders/256x256.png';
+    const activeImgURL = this.state.active ? this.props.url : 'https://previews.123rf.com/images/nnattally/nnattally1504/nnattally150400025/39341446-rainbow-pixel-art-vector-abstract-background-pattern-.jpg';
 
     return (
-      <div className={`column is-${this.props.size}${this.state.active ? ' activeCard' : ''}`}>
+      <div className={`column is-one-third-mobile is-one-quarter-tablet ${this.state.active ? ' activeCard' : ''}`}>
         <figure className="image is-square">
           {this.props.cardData.find(card => card.url === this.props.url).matched
             ? null
-            : <img src={activeImgURL} onClick={this.checkActive} />
+            : <img id="gameCard" src={activeImgURL} onClick={this.checkActive} />
           }
         </figure>
       </div>
