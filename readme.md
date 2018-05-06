@@ -11,7 +11,7 @@ Playable demo online at:
 http://patrickschuelke.me/memeory/
 ```
 
-![Imgur](https://i.imgur.com/TxF8g3Y.gifv)
+<img src="https://i.imgur.com/TxF8g3Y.gif" width="500" height="500" />)
 
 
 ## Getting Started
