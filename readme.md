@@ -4,6 +4,19 @@ A memory-game played with gifs instead of images. Players can choose any theme t
 
 **Work-in-progress alpha version**
 
+Plans/fixes for future versions:
+* Multiple difficulty settings
+* Load cards only when gifs have finished downloading
+* Improve styling
+* ... and more
+
+## Motivation
+
+Small learning-project with the following goals:
+
+1. Familiarize myself React with a very interactive project
+2. Deepen my knowledge of how to combine React with the asynchronous nature of external APIs
+
 ## Demo
 Playable demo online at:
 
