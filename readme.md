@@ -8,7 +8,7 @@ A memory-game played with gifs instead of images. Players can choose any theme t
 Playable demo online at:
 
 ```
-http://patrickschuelke.me/memeory/dist/index.html
+http://patrickschuelke.me/memeory/
 ```
 
 ## Getting Started
