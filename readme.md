@@ -11,6 +11,9 @@ Playable demo online at:
 http://patrickschuelke.me/memeory/
 ```
 
+![Imgur](https://i.imgur.com/TxF8g3Y.gifv)
+
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
