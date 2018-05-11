@@ -6,7 +6,8 @@ const Footer = () => (
       <div className="content has-text-centered">
         <p>
           <strong>Memeory</strong> by <a href="#">Patrick Schülke</a>. The source code is licensed
-          <a href="http://opensource.org/licenses/mit-license.php"> MIT</a>. <a href="#">Impressum</a>.
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.{' '}
+          <a href="#">Impressum</a>.
         </p>
       </div>
     </div>
