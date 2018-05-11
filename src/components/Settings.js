@@ -9,18 +9,12 @@ class Settings extends Component {
     theme: PropTypes.string
   };
 
-  handleStartGameClick = () => {
-    if (this.props.theme && this.props.cards % 2 === 0) {
-      this.props.startGame();
-    }
-  };
-
   render() {
     return (
       <section className="section is-medium">
         <h1 className="title has-text-centered">Choose your settings</h1>
         <div className="container">
-          <div className='columns'>
+          <div className="columns">
             <div className="field column is-two-thirds">
               <label className="label">Choose a theme</label>
               <div className="control">
@@ -53,11 +47,9 @@ class Settings extends Component {
               <p className="help">This chooses the number of cards for the next game (max 16)</p>
             </div>
           </div>
-          <a
-            className="button is-primary playbutton"
-            onClick={this.handleStartGameClick}>
+          <a className="button is-primary playbutton" onClick={this.props.startGame}>
             Start the game!
-        </a>
+          </a>
         </div>
       </section>
     );
