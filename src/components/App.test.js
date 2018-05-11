@@ -81,4 +81,52 @@ describe('App', () => {
       expect(wrapper.state('won')).toBe(false);
     });
   });
+
+  describe('function checkCardMatch()', () => {
+    let instance;
+    beforeEach(() => {
+      jest.useFakeTimers();
+      instance = wrapper.instance();
+    });
+
+    it('should set matched to "true" if a matching cardpair was found (clicked: 2)', () => {
+      wrapper.setState({ cards: [{ id: 1, matched: false, clicked: 2 }] });
+      expect(wrapper.state('cards')[0].matched).toBe(false);
+      instance.checkCardMatch();
+      jest.runAllTimers();
+      expect(wrapper.state('cards')[0].matched).toBe(true);
+    });
+
+    it('should reset "clicked" property to 0 for every card', () => {
+      wrapper.setState({ cards: [{ id: 1, clicked: 2 }, { id: 2, clicked: 0 }] });
+      instance.checkCardMatch();
+      jest.runAllTimers();
+      expect(wrapper.state('cards').every(card => card.clicked === 0)).toBe(true);
+    });
+
+    it('should set state of "activeCards" to 0', () => {
+      wrapper.setState({ activeCards: 2 });
+      instance.checkCardMatch();
+      jest.runAllTimers();
+      expect(wrapper.state('activeCards')).toBe(0);
+    });
+
+    it('should call function checkForWin', () => {
+      const checkForWinSpy = jest.spyOn(instance, 'checkForWin');
+      instance.checkCardMatch();
+      jest.runAllTimers();
+      expect(checkForWinSpy).toHaveBeenCalled();
+    });
+
+    it('there should be a delay before setting state and function call', () => {
+      const checkForWinSpy = jest.spyOn(instance, 'checkForWin');
+      wrapper.setState({ activeCards: 2 });
+      instance.checkCardMatch();
+      expect(wrapper.state('activeCards')).toBe(2);
+      expect(checkForWinSpy).not.toBeCalled();
+      jest.runAllTimers();
+      expect(wrapper.state('activeCards')).toBe(0);
+      expect(checkForWinSpy).toHaveBeenCalled();
+    });
+  });
 });
