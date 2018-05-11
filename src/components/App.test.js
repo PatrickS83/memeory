@@ -139,4 +139,47 @@ describe('App', () => {
       expect(fetchGifsSpy).toHaveBeenCalled();
     });
   });
+
+  describe('function fetchGifs', () => {
+    let instance;
+    beforeEach(() => {
+      instance = wrapper.instance();
+      const settings = { cards: 4, theme: 'cats' };
+      wrapper.setState({ settings });
+      global.fetch = jest.fn().mockImplementation(() =>
+        Promise.resolve({
+          json: () => ({
+            results: [
+              { media: [{ gif: { url: 'url1' } }] },
+              { media: [{ gif: { url: 'url2' } }] },
+              { media: [{ gif: { url: 'url3' } }] },
+              { media: [{ gif: { url: 'url4' } }] }
+            ]
+          })
+        })
+      );
+    });
+
+    it('calls fetch with the correct url, key and theme from state', async () => {
+      await instance.fetchGifs();
+      expect(global.fetch).toHaveBeenCalledWith(
+        'https://api.tenor.com/v1/search?tag=cats&key=PPGBBI41SF35&media_filter=minimal'
+      );
+    });
+
+    it('sets the correct amount of cards to state', async () => {
+      await instance.fetchGifs();
+      expect(wrapper.state('cards').length).toBe(2);
+    });
+
+    it('creates the correct card object structure', async () => {
+      await instance.fetchGifs();
+      const [cards] = wrapper.state('cards');
+      expect(Object.keys(cards).length).toBe(4);
+      expect(typeof cards.id).toBe('number');
+      expect(typeof cards.url).toBe('string');
+      expect(typeof cards.clicked).toBe('number');
+      expect(typeof cards.matched).toBe('boolean');
+    });
+  });
 });
