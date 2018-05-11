@@ -129,4 +129,14 @@ describe('App', () => {
       expect(checkForWinSpy).toHaveBeenCalled();
     });
   });
+
+  describe('function startGame()', () => {
+    it('should call fetchGifs function', () => {
+      const instance = wrapper.instance();
+      // mockImplementation: prevent function from actually getting called
+      const fetchGifsSpy = jest.spyOn(instance, 'fetchGifs').mockImplementation(() => null);
+      instance.startGame();
+      expect(fetchGifsSpy).toHaveBeenCalled();
+    });
+  });
 });
