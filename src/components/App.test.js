@@ -5,6 +5,7 @@ import Layout from './Layout';
 import Header from './Header';
 import Settings from './Settings';
 import Gamecontainer from './Gamecontainer';
+import mockfetchTenor from './__mocks__/mockfetchTenor';
 
 describe('App', () => {
   let wrapper;
@@ -146,18 +147,7 @@ describe('App', () => {
       instance = wrapper.instance();
       const settings = { cards: 4, theme: 'cats' };
       wrapper.setState({ settings });
-      global.fetch = jest.fn().mockImplementation(() =>
-        Promise.resolve({
-          json: () => ({
-            results: [
-              { media: [{ gif: { url: 'url1' } }] },
-              { media: [{ gif: { url: 'url2' } }] },
-              { media: [{ gif: { url: 'url3' } }] },
-              { media: [{ gif: { url: 'url4' } }] }
-            ]
-          })
-        })
-      );
+      global.fetch = jest.fn().mockImplementation(mockfetchTenor);
     });
 
     it('calls fetch with the correct url, key and theme from state', async () => {
