@@ -172,4 +172,41 @@ describe('App', () => {
       expect(typeof cards.matched).toBe('boolean');
     });
   });
+
+  describe('function handleCardClick()', () => {
+    let instance;
+    beforeEach(() => {
+      instance = wrapper.instance();
+      wrapper.setState({
+        cards: [{ id: 1, clicked: 0, url: 'test-url' }, { id: 2, clicked: 0, url: 'other-url' }],
+        activeCards: 0
+      });
+    });
+
+    it('should increase "clicked" property of the card with provided URL by 1', () => {
+      expect(wrapper.state('cards')[0].clicked).toBe(0);
+      instance.handleCardClick('test-url');
+      expect(wrapper.state('cards')[0].clicked).toBe(1);
+    });
+
+    it('should not increase "clicked" property of cards with a different URL', () => {
+      expect(wrapper.state('cards')[1].clicked).toBe(0);
+      instance.handleCardClick('test-url');
+      expect(wrapper.state('cards')[1].clicked).toBe(0);
+    });
+
+    it('should increase "activeCards" state by 1', () => {
+      expect(wrapper.state('activeCards')).toBe(0);
+      instance.handleCardClick('test-url');
+      expect(wrapper.state('activeCards')).toBe(1);
+    });
+
+    it('should invoke "checkCardMatch()" if activeCards reaches 2', () => {
+      const checkCardMatch = jest.spyOn(instance, 'checkCardMatch').mockImplementation(() => null);
+      instance.handleCardClick('test-url');
+      expect(checkCardMatch).not.toHaveBeenCalled();
+      instance.handleCardClick('test-url');
+      expect(checkCardMatch).toHaveBeenCalled();
+    });
+  });
 });
