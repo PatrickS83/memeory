@@ -43,11 +43,9 @@ class App extends Component {
 
   handleCardClick = url => {
     const cards = [...this.state.cards];
+    const activeCards = this.state.activeCards + 1;
     cards.find(card => card.url === url).clicked += 1;
-    this.setState({ cards });
-
-    let { activeCards } = this.state;
-    this.setState({ activeCards: (activeCards += 1) });
+    this.setState({ cards, activeCards });
     if (activeCards === 2) this.checkCardMatch();
   };
 
