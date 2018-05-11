@@ -132,12 +132,24 @@ describe('App', () => {
   });
 
   describe('function startGame()', () => {
-    it('should call fetchGifs function', () => {
-      const instance = wrapper.instance();
+    let instance;
+    let fetchGifsSpy;
+    beforeEach(() => {
+      instance = wrapper.instance();
       // mockImplementation: prevent function from actually getting called
-      const fetchGifsSpy = jest.spyOn(instance, 'fetchGifs').mockImplementation(() => null);
+      fetchGifsSpy = jest.spyOn(instance, 'fetchGifs').mockImplementation(() => null);
+    });
+
+    it('should call fetchGifs function if settings are correct', () => {
+      wrapper.setState({ settings: { cards: 4, theme: 'cats' } });
       instance.startGame();
       expect(fetchGifsSpy).toHaveBeenCalled();
+    });
+
+    it('should not call fetchGifs function if settings are incorrect', () => {
+      wrapper.setState({ settings: { cards: 1, theme: '' } });
+      instance.startGame();
+      expect(fetchGifsSpy).not.toHaveBeenCalled();
     });
   });
 
