@@ -40,7 +40,7 @@ class App extends Component {
     const searchTheme = this.state.settings.theme;
     const APIKEY = 'PPGBBI41SF35';
 
-    fetch(
+    return fetch(
       `https://api.tenor.com/v1/search?tag=${searchTheme}&key=${APIKEY}&media_filter=minimal`
     )
       .then(response => response.json())
@@ -78,8 +78,7 @@ class App extends Component {
   handleSettingsInputChange = e => {
     const elem = e.currentTarget;
     const settings = { ...this.state.settings };
-    settings[elem.name] =
-      elem.name === 'theme' ? elem.value : Number(elem.value);
+    settings[elem.name] = elem.name === 'theme' ? elem.value : Number(elem.value);
     this.setState({ settings });
   };
 
