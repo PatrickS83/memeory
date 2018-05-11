@@ -3,6 +3,8 @@ import { shallow } from 'enzyme';
 import App from './App';
 import Layout from './Layout';
 import Header from './Header';
+import Settings from './Settings';
+import Gamecontainer from './Gamecontainer';
 
 describe('App', () => {
   let wrapper;
@@ -22,6 +24,24 @@ describe('App', () => {
 
     it('renders <Header/> Component', () => {
       expect(wrapper.find(Header).length).toEqual(1);
+    });
+
+    it('renders <Settings /> Component by default when app is started', () => {
+      expect(wrapper.find(Settings).length).toEqual(1);
+    });
+
+    it('does not render <Settings /> when cards array is filled', () => {
+      wrapper.setState({ cards: [{ id: 1, matched: false }] });
+      expect(wrapper.find(Settings).length).toEqual(0);
+    });
+
+    it('does not render <Gamecontainer /> Component by default when app is started', () => {
+      expect(wrapper.find(Gamecontainer).length).toEqual(0);
+    });
+
+    it('renders <Gamecontainer /> when cards array is filled', () => {
+      wrapper.setState({ cards: [{ id: 1, matched: false }] });
+      expect(wrapper.find(Gamecontainer).length).toEqual(1);
     });
   });
 
