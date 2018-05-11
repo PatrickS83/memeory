@@ -5,12 +5,12 @@ import Winscreen from './Winscreen';
 
 class Gamecontainer extends Component {
   static propTypes = {
-    size: PropTypes.number,
-    cardData: PropTypes.array,
-    handleCardClick: PropTypes.func,
-    resetGame: PropTypes.func,
-    activeCards: PropTypes.number,
-    hasWon: PropTypes.bool,
+    size: PropTypes.number.isRequired,
+    cardData: PropTypes.arrayOf(PropTypes.object).isRequired,
+    handleCardClick: PropTypes.func.isRequired,
+    resetGame: PropTypes.func.isRequired,
+    activeCards: PropTypes.number.isRequired,
+    hasWon: PropTypes.bool.isRequired
   };
 
   componentWillMount() {
@@ -20,7 +20,7 @@ class Gamecontainer extends Component {
     this.setState({ shuffledURL });
   }
 
-  shuffle(array) {
+  shuffle = array => {
     const urls = [...array];
     let ctr = array.length;
     let index;
@@ -34,27 +34,28 @@ class Gamecontainer extends Component {
       [urls[ctr], urls[index]] = [urls[index], urls[ctr]];
     }
     return urls;
-  }
+  };
 
   render() {
     return (
       <section className="section">
         <div className="container">
-          {this.props.hasWon
-            ?
+          {this.props.hasWon ? (
             <Winscreen resetGame={this.props.resetGame} />
-            :
+          ) : (
             <div className="columns is-multiline is-mobile">
-              {this.state.shuffledURL
-                .map((url, i) => <Card
+              {this.state.shuffledURL.map((url, i) => (
+                <Card
                   key={i}
                   size={this.props.size}
                   url={url}
                   handleCardClick={this.props.handleCardClick}
                   activeCards={this.props.activeCards}
                   cardData={this.props.cardData}
-                />)}
-            </div>}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
     );
