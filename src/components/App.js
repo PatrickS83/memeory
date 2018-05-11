@@ -50,8 +50,10 @@ class App extends Component {
   };
 
   startGame = () => {
-    console.log('starting');
-    this.fetchGifs();
+    const { settings } = this.state;
+    if (settings.theme && settings.cards % 2 === 0) {
+      this.fetchGifs();
+    }
   };
 
   handleSettingsInputChange = e => {
@@ -62,14 +64,18 @@ class App extends Component {
   };
 
   checkCardMatch = () => {
-    // deep copy of array of objects. [... state] is only shallow copy.
-    // TODO: find better way
+    // needed deep copy of array of objects | TODO: find better way
     const cards = JSON.parse(JSON.stringify(this.state.cards));
-    if (cards.find(card => card.clicked === 2)) {
-      console.log('match!');
-      cards.find(card => card.clicked === 2).matched = true;
-    } else console.log('try again');
-    cards.forEach(card => (card.clicked = 0));
+    const cardClickedTwice = cards.find(card => card.clicked === 2);
+    if (cardClickedTwice) {
+      // Insert success message/here here
+      cardClickedTwice.matched = true;
+    } else {
+      // insert fail message/action here
+    }
+    cards.forEach(card => {
+      card.clicked = 0;
+    });
     // show cards for some time before resetting
     setTimeout(() => {
       this.setState({ cards, activeCards: 0 });
