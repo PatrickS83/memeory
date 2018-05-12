@@ -22,6 +22,7 @@ class App extends Component {
     const searchTheme = this.state.settings.theme;
     const APIKEY = 'PPGBBI41SF35';
 
+    this.setState({ loading: true });
     return fetch(
       `https://api.tenor.com/v1/search?tag=${searchTheme}&key=${APIKEY}&media_filter=minimal`
     )
@@ -31,7 +32,6 @@ class App extends Component {
           url: gif.media[0].gif.url
         }));
         // preloading images, so that user doesn't have to wait when a card is clicked
-        this.setState({ loading: true });
         const preloadImage = url =>
           new Promise(resolve => {
             const img = new Image();
