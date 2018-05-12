@@ -1,23 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
+const Layout = props => (
+  <div>
+    <Navbar />
+    {props.children}
+    <Footer />
+  </div>
+);
 
-class Layout extends Component {
-  static propTypes = {
-    children: PropTypes.node
-  };
-
-  render() {
-    return (
-      <div>
-        <Navbar />
-        {this.props.children}
-        <Footer />
-      </div>
-    );
-  }
-}
+Layout.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 export default Layout;
