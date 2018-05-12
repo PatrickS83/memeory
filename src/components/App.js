@@ -13,7 +13,8 @@ class App extends Component {
       cards: 4, // minimum value
       theme: ''
     },
-    won: false
+    won: false,
+    loading: false
   };
 
   fetchGifs = () => {
@@ -33,11 +34,18 @@ class App extends Component {
           matched: false
         }));
         // preloading images, so that user doesn't have to wait when a card is clicked
-        cards.forEach(x => {
-          const preloadImage = new Image();
-          preloadImage.src = x.url;
-        });
-        this.setState({ cards });
+        this.setState({ loading: true });
+        const preloadImage = url =>
+          new Promise(resolve => {
+            const img = new Image();
+            img.onload = () => resolve({ url, status: 'ok', clicked: 0, matched: false });
+            img.onerror = () => resolve({ url, status: 'error', clicked: 0, matched: false });
+            img.src = url;
+          });
+        return Promise.all(cards.map(card => preloadImage(card.url)));
+      })
+      .then(cards => {
+        this.setState({ cards, loading: false });
       });
   };
 
