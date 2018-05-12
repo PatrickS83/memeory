@@ -17,7 +17,10 @@
     "setupTestFrameworkScriptFile": "./src/setupEnzyme.js",
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ]
+    ],
+    "testEnvironmentOptions": {
+      "resources": "usable"
+    }
   },
   "bugs": {
     "url": "https://github.com/PatrickS83/react_exercises/issues"
