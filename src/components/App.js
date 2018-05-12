@@ -27,11 +27,8 @@ class App extends Component {
     )
       .then(response => response.json())
       .then(data => {
-        const cards = data.results.splice(0, amountGifs).map((gif, i) => ({
-          id: i,
-          url: gif.media[0].gif.url,
-          clicked: 0,
-          matched: false
+        const cards = data.results.splice(0, amountGifs).map(gif => ({
+          url: gif.media[0].gif.url
         }));
         // preloading images, so that user doesn't have to wait when a card is clicked
         this.setState({ loading: true });
@@ -120,6 +117,7 @@ class App extends Component {
               startGame={this.startGame}
               theme={this.state.settings.theme}
               cards={this.state.settings.cards}
+              loading={this.state.loading}
             />
           )}
         </Layout>
