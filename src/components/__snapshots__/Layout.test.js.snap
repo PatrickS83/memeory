@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Layout/> renders the Layout as saved in snapshot 1`] = `
+<div>
+  <Navbar />
+  <p>
+    TestChild
+  </p>
+  <Footer />
+</div>
+`;
