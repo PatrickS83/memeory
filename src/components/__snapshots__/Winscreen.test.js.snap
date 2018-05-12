@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Winscreen/> renders the Winscreen as saved in snapshot 1`] = `
+<React.Fragment>
+  <h1
+    className="title has-text-centered"
+  >
+    YOU WON !!!!
+  </h1>
+  <div
+    className="columns is-multiline is-mobile"
+  >
+    <div
+      className="column is-6"
+    >
+      <figure
+        className="image is-square"
+      >
+        <img
+          alt=""
+          src="https://media.giphy.com/media/gsrkIo59dnI8E/giphy.gif"
+        />
+      </figure>
+    </div>
+    <div
+      className="column is-6"
+    >
+      <figure
+        className="image is-square"
+      >
+        <img
+          alt=""
+          src="https://media.giphy.com/media/T6l1LBKmtUu9a/giphy.gif"
+        />
+      </figure>
+    </div>
+    <button
+      className="button is-info playbutton"
+      onClick={[MockFunction]}
+    >
+      Play again!
+    </button>
+  </div>
+</React.Fragment>
+`;
