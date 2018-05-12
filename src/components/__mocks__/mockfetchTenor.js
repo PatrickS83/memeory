@@ -2,10 +2,10 @@ const mockfetchTenor = () =>
   Promise.resolve({
     json: () => ({
       results: [
-        { media: [{ gif: { url: 'url1' } }] },
-        { media: [{ gif: { url: 'url2' } }] },
-        { media: [{ gif: { url: 'url3' } }] },
-        { media: [{ gif: { url: 'url4' } }] }
+        { media: [{ gif: { url: 'https://media.giphy.com/media/gsrkIo59dnI8E/giphy.gif' } }] },
+        { media: [{ gif: { url: 'https://media.giphy.com/media/gsrkIo59dnI8E/giphy.gif' } }] },
+        { media: [{ gif: { url: 'https://media.giphy.com/media/gsrkIo59dnI8E/giphy.gif' } }] },
+        { media: [{ gif: { url: 'https://media.giphy.com/media/gsrkIo59dnI8E/giphy.gif' } }] }
       ]
     })
   });
