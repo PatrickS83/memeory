@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header/> renders the Header as saved in snapshot 1`] = `
+<section
+  className="hero is-info"
+>
+  <div
+    className="hero-body"
+  >
+    <div
+      className="container"
+    >
+      <h1
+        className="title"
+      >
+        Memeory
+      </h1>
+      <h2
+        className="subtitle"
+      >
+        Like memory. But fun.
+      </h2>
+    </div>
+  </div>
+</section>
+`;
