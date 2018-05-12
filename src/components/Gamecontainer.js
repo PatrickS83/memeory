@@ -13,7 +13,11 @@ class Gamecontainer extends Component {
     hasWon: PropTypes.bool.isRequired
   };
 
-  componentWillMount() {
+  state = {
+    shuffledURL: []
+  };
+
+  componentDidMount() {
     const urls = this.props.cardData.map(card => card.url);
     const doubleURL = [...urls, ...urls];
     const shuffledURL = this.shuffle(doubleURL);
