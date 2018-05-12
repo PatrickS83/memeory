@@ -16,6 +16,7 @@ describe('<Settings/>', () => {
         startGame={startGame}
         cards={4}
         theme="cats"
+        loading={false}
       />
     );
   });
