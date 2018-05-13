@@ -9,29 +9,19 @@ exports[`<Navbar/> renders the Navbar as saved in snapshot 1`] = `
   >
     <a
       className="navbar-item"
-      href="https://bulma.io"
+      href="https://patrickschuelke.me/memeory/"
     >
       <img
-        alt="Bulma: a modern CSS framework based on Flexbox"
-        height="28"
-        src="https://bulma.io/images/bulma-logo-white.png"
-        width="112"
+        alt="Website Logo"
+        height="auto"
+        src="./img/memeory-logo-white.png"
+        width="150"
       />
     </a>
   </div>
   <div
     className="navbar-menu"
   >
-    <div
-      className="navbar-start"
-    >
-      <a
-        className="navbar-item"
-        href="#"
-      >
-        Home
-      </a>
-    </div>
     <div
       className="navbar-end"
     >
@@ -46,10 +36,10 @@ exports[`<Navbar/> renders the Navbar as saved in snapshot 1`] = `
           >
             <a
               className="button is-primary"
-              href="#"
+              href="https://github.com/PatrickS83/"
             >
               <span>
-                Download
+                Github
               </span>
             </a>
           </p>
