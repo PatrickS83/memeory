@@ -24,9 +24,7 @@ class Card extends Component {
   };
 
   render() {
-    const activeImgURL = this.state.active
-      ? this.props.url
-      : 'https://previews.123rf.com/images/nnattally/nnattally1504/nnattally150400025/39341446-rainbow-pixel-art-vector-abstract-background-pattern-.jpg';
+    const activeImgURL = this.state.active ? this.props.url : './img/card-logo.png';
 
     return (
       <div
