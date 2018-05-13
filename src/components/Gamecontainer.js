@@ -41,21 +41,22 @@ class Gamecontainer extends Component {
   };
 
   render() {
+    const { hasWon, resetGame, size, handleCardClick, activeCards, cardData } = this.props;
     return (
       <section className="section">
         <div className="container">
-          {this.props.hasWon ? (
-            <Winscreen resetGame={this.props.resetGame} />
+          {hasWon ? (
+            <Winscreen resetGame={resetGame} />
           ) : (
             <div className="columns is-multiline is-mobile">
               {this.state.shuffledURL.map((url, i) => (
                 <Card
                   key={i}
-                  size={this.props.size}
+                  size={size}
                   url={url}
-                  handleCardClick={this.props.handleCardClick}
-                  activeCards={this.props.activeCards}
-                  cardData={this.props.cardData}
+                  handleCardClick={handleCardClick}
+                  activeCards={activeCards}
+                  cardData={cardData}
                 />
               ))}
             </div>

@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Card extends Component {
-  state = { active: false };
-
   static propTypes = {
-    size: PropTypes.number,
-    url: PropTypes.string,
-    handleCardClick: PropTypes.func,
-    activeCards: PropTypes.number,
-    cardData: PropTypes.array
+    size: PropTypes.number.isRequired,
+    url: PropTypes.string.isRequired,
+    handleCardClick: PropTypes.func.isRequired,
+    activeCards: PropTypes.number.isRequired,
+    cardData: PropTypes.arrayOf(PropTypes.object).isRequired
   };
+
+  state = { active: false };
 
   componentDidUpdate() {
     if (this.props.activeCards === 0 && this.state.active) this.setState({ active: false });
@@ -25,16 +25,19 @@ class Card extends Component {
 
   render() {
     const activeImgURL = this.state.active ? this.props.url : './img/card-logo.png';
+    const activeImgClass = this.state.active ? ' activeCard' : '';
 
     return (
-      <div
-        className={`column is-one-third-mobile is-one-quarter-tablet ${
-          this.state.active ? ' activeCard' : ''
-        }`}
-      >
+      <div className="column is-one-third-mobile is-one-quarter-tablet">
         <figure className="image is-square">
           {this.props.cardData.find(card => card.url === this.props.url).matched ? null : (
-            <img id="gameCard" src={activeImgURL} onClick={this.checkActive} />
+            <img
+              id="gameCard"
+              className={activeImgClass}
+              src={activeImgURL}
+              onClick={this.checkActive}
+              alt="Playing Card"
+            />
           )}
         </figure>
       </div>
