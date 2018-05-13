@@ -4,7 +4,11 @@ const Navbar = () => (
   <nav className="navbar is-primary">
     <div className="navbar-brand">
       <a className="navbar-item" href="https://patrickschuelke.me/memeory/">
-        <img src="./img/memeory-logo-white.png" alt="Website Logo" width="150" height="auto" />
+        <img
+          style={{ maxHeight: '2.5rem' }}
+          src="./img/memeory-logo-white.png"
+          alt="Website Logo"
+        />
       </a>
     </div>
 

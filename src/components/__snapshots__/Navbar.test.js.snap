@@ -13,9 +13,12 @@ exports[`<Navbar/> renders the Navbar as saved in snapshot 1`] = `
     >
       <img
         alt="Website Logo"
-        height="auto"
         src="./img/memeory-logo-white.png"
-        width="150"
+        style={
+          Object {
+            "maxHeight": "2.5rem",
+          }
+        }
       />
     </a>
   </div>
