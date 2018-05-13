@@ -3,6 +3,7 @@ import Layout from './Layout';
 import Gamecontainer from './Gamecontainer';
 import Header from './Header';
 import Settings from './Settings';
+import LandingPageAnimation from './LandingPageAnimation';
 
 class App extends Component {
   state = {
@@ -121,6 +122,7 @@ class App extends Component {
             />
           )}
         </Layout>
+        <LandingPageAnimation />
       </React.Fragment>
     );
   }
