@@ -6,7 +6,6 @@ A memory-game played with gifs instead of images. Players can choose any theme t
 
 Plans/fixes for future versions:
 * Multiple difficulty settings
-* Load cards only when gifs have finished downloading
 * Improve styling
 * ... and more
 
@@ -16,6 +15,7 @@ Small learning-project with the following goals:
 
 1. Familiarize myself React with a very interactive project
 2. Deepen my knowledge of how to combine React with the asynchronous nature of external APIs
+3. Learn Unit Testing and TDD with Jest and Enzyme
 
 ## Demo
 Playable demo online at:
@@ -56,13 +56,23 @@ Then run any form of live server in the /dist folder
 live-server
 ```
 
-## Deployment
+## Testing environment
 
-currently not ready to be deployed
+Unit tests were written with Jest and Enzyme.
+They can be found with the Syntax `ComponentName.test.js`
+Tests can be run with the following commands:
+
+```
+npm test
+npm run test:watch
+npm run test:coverage
+```
 
 ## Built With
 
 * [React](https://github.com/facebook/react) - The web framework used
+* [Jest](https://facebook.github.io/jest/) - Testing framework
+* [Enzyme](http://airbnb.io/enzyme/) - JavaScript Testing utility for React
 * [Bulma](https://bulma.io/) - CSS Framework
 * [Tenor](https://tenor.com/) - Public GIF Api
 
