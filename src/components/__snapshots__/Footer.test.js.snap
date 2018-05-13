@@ -3,6 +3,11 @@
 exports[`<Footer/> renders the footer as saved in snapshot 1`] = `
 <footer
   className="footer"
+  style={
+    Object {
+      "padding": "2.5rem 1.5rem 4rem",
+    }
+  }
 >
   <div
     className="container"
@@ -24,7 +29,7 @@ exports[`<Footer/> renders the footer as saved in snapshot 1`] = `
         <a
           href="http://opensource.org/licenses/mit-license.php"
         >
-          MIT
+           MIT
         </a>
         .
          

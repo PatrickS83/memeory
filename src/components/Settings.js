@@ -6,7 +6,7 @@ const Settings = props =>
   props.loading ? (
     <Loading />
   ) : (
-    <section className="section is-medium">
+    <section className="section is-medium settings">
       <h1 className="title has-text-centered">Choose your settings</h1>
       <div className="container">
         <div className="columns">
