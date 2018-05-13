@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LandingPageAnimation/> renders the LandingPageAnimation as saved in snapshot 1`] = `
+<div
+  id="splash"
+>
+  <div
+    className="anim"
+  >
+    <div
+      id="loader"
+    >
+      <img
+        alt="Landingpage Logo"
+        id="landingLogo"
+        src="./img/memeory-logo-white.png"
+      />
+    </div>
+  </div>
+</div>
+`;
