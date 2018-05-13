@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Settings from './Settings';
+import Loading from './Loading';
 
 describe('<Settings/>', () => {
   let wrapper;
@@ -29,6 +30,20 @@ describe('<Settings/>', () => {
     expect(startGame).not.toHaveBeenCalled();
     wrapper.find('.playbutton').simulate('click');
     expect(startGame).toHaveBeenCalled();
+  });
+
+  describe('Rendering', () => {
+    it('renders <Loading/> Component, when cards are loading', () => {
+      expect(wrapper.find(Loading).length).toBe(0);
+      wrapper.setProps({ loading: true });
+      expect(wrapper.find(Loading).length).toBe(1);
+    });
+
+    it('renders Settings section, when no cards are loading', () => {
+      expect(wrapper.find('.settings').length).toBe(1);
+      wrapper.setProps({ loading: true });
+      expect(wrapper.find('.settings').length).toBe(0);
+    });
   });
 
   describe('Theme Input', () => {
