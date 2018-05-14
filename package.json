@@ -5,6 +5,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:detail": "jest --verbose",
     "test:coverage": "jest --coverage"
   },
   "repository": {
