@@ -3,7 +3,7 @@ import React from 'react';
 const Navbar = () => (
   <nav className="navbar is-primary">
     <div className="navbar-brand">
-      <a className="navbar-item" href="https://patrickschuelke.me/memeory/">
+      <a className="navbar-item" href="http://patrickschuelke.me/memeory/">
         <img
           style={{ maxHeight: '2.5rem' }}
           src="./img/memeory-logo-white.png"
@@ -17,7 +17,7 @@ const Navbar = () => (
         <div className="navbar-item">
           <div className="field is-grouped">
             <p className="control">
-              <a className="button is-primary" href="https://github.com/PatrickS83/">
+              <a className="button is-primary" href="https://github.com/PatrickS83/memeory/">
                 <span>Github</span>
               </a>
             </p>
